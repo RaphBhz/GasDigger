@@ -1,0 +1,46 @@
+@import url('https://necolas.github.io/normalize.css/8.0.1/normalize.css');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap');
+
+.page {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+.navbar {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bolder;
+    border-bottom: black 1px solid;
+    width: 100vw;
+}
+
+.mainframe {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+.filters {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    border-right: black 1px solid;
+}
+
+.filter {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bolder;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    padding: 0px 10px 10px 10px;
+}
+
+.dash-dropdown {
+    padding-left: 10px;
+    width: 200px;
+}
