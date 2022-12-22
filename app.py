@@ -5,7 +5,7 @@ from dash import dcc, Input, Output
 from dash import html
 
 # Project utility
-from graphs import create_histogram
+from graphs import create_histogram, maps, calcul_distance
 from api import fetch_data
 from components import NAVBAR, get_content, get_filters
 
@@ -18,6 +18,13 @@ deps = pd.unique(df['dep_code'])
 deps = deps.astype('str')
 deps.sort()
 
+carburant = 'Gazole'
+prixmax = 2
+rayon = 10
+maposition = "48.855653723805936,2.368239380994926" 
+list_services = ['Boutique alimentaire','Boutique non alimentaire']
+
+maps(df, carburant, prixmax, maposition, list_services, rayon)
 if __name__ == '__main__':
     # Preparing graph to display
     figure = create_histogram(df, CODE_DEP, fuels[0], DATA_TARGET)
@@ -31,7 +38,11 @@ if __name__ == '__main__':
                                                        get_filters(fuels, deps),
                                                        get_content(figure)
                                                    ]
-                                            )
+                                            ),
+                                            html.Iframe(className="mainframe",
+                                                id = 'map', 
+                                                srcDoc = open('maps.html', 'r').read(),
+                                                height = '600')
     ])
 
     # Implementing interactivity
