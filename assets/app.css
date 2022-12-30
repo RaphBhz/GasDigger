@@ -1,10 +1,50 @@
 @import url('https://necolas.github.io/normalize.css/8.0.1/normalize.css');
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap');
+@import url('https://cdn.remixicon.com/releases/v1.2.2/remixicon.css');
 
-
-.navbar {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: bolder;
-    border-bottom: black 1px solid;
+.page {
+    overflow: hidden;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
 }
 
+
+.filters {
+    width: 35%;
+    height: 100%;
+    float:left;
+    margin: 10px;
+}
+
+i {
+    color: red;
+    float : left;
+    font-size: 20px;
+    
+}
+
+iframe {
+    width:100%;
+    height:100%;
+}
+
+.graphs
+{
+    height: 60vh;
+}
+
+.tabs
+{
+    margin:10px;
+}
+
+.dropdown {
+    height: 100%;
+    width: 85%;
+    float : right;
+}
+
+.alerts{
+    margin:10px;
+}

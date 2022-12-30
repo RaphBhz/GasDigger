@@ -11,6 +11,18 @@ def get_geo(adress):
     print(locastring)
     return locastring
 
+def verif_adress(adress):
+    try:
+        geolocator = Nominatim(user_agent="adamfrancetest@gmail.com")
+        location = geolocator.geocode(adress+', France', language="fr", exactly_one=False)
+        print(location)
+        time.sleep(1)
+        return location
+    except:
+        print("Caught it!")
+        time.sleep(1)
+        return False
+
 def fetch_data():
     start = time.time()
     print("Fetching data...")

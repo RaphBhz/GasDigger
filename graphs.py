@@ -36,7 +36,7 @@ def maps(df, carburant, prixmin, prixmax, maposition, list_services, rayon):
         # type de carburant - prix - rayon de recherche - services
 
     df = df.query('prix_nom =="' + carburant + '" & prix_valeur < '+ str(prixmax) + '& prix_valeur > '+ str(prixmin))
-    print(str(prixmax))
+    print(str(prixmax   ))
 
     # RAYON DE RECHERCHE
     for index, row in df.iterrows():
@@ -114,8 +114,10 @@ def create_histogram(dataframe, dep, fuel, target):
     # Preparing the graph
     return px.histogram(data,
                         x=target,
+                        height=335,
                         labels={'prix_valeur': 'Prix (€)', 'count': 'Stations (unité)'},
                         range_x=[min_value, max_value],
                         nbins=50,
-                        histnorm='density'
+                        histnorm='density',
+                        color_discrete_sequence=['indianred']
                         )
