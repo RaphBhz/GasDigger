@@ -5,11 +5,9 @@ import time
 API_ENDPOINT = "data.csv"
 
 def get_geo(adress):
-    geolocator = Nominatim(user_agent="adamfrancetest@gmail.com")
-    location = geolocator.geocode(adress)
-    locastring = str(location.latitude)+','+str(location.longitude)
-    print(locastring)
-    return locastring
+    geolocator = Nominatim(user_agent="gasdigger")
+    location = geolocator.geocode(adress, exactly_one=False)
+    return location
 
 def verif_adress(adress):
     try:

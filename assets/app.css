@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap');
 @import url('https://cdn.remixicon.com/releases/v1.2.2/remixicon.css');
 
-.page {
+#provider {
     overflow: hidden;
     flex-direction: column;
     height: 100vh;
@@ -17,12 +17,6 @@
     margin: 10px;
 }
 
-i {
-    color: red;
-    float : left;
-    font-size: 20px;
-    
-}
 
 iframe {
     width:100%;
@@ -47,4 +41,19 @@ iframe {
 
 .alerts{
     margin:10px;
+}
+
+#map_button
+{
+    height: 10vh;
+    width: 20vh;
+}
+
+.price {
+    margin-top: 15px;
+}
+
+.rayon {
+    margin-top: 15px;
+    margin-bottom: 20px;
 }

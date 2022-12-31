@@ -5,7 +5,7 @@ import datetime
 import haversine as hs
 import folium
 import plotly.express as px
-
+import dash_mantine_components as dmc
 # Ceci est une fonction qui retourne
 # Vrai : si la station se trouve à côté du client sur une distance qui est ici 'rayon'
 # Faux : contraire
@@ -73,7 +73,7 @@ def maps(df, carburant, prixmin, prixmax, maposition, list_services, rayon):
     mapos = [float(x[0]),float(x[1])]
 
     world_map = folium.Map(location =mapos, 
-                        zoom_start = 9, tiles ='Stamen Toner')
+                        zoom_start = 10, tiles ='Stamen Toner')
 
 
     folium.Circle(mapos, rayon*1000, color="yellow",fill=True).add_child(folium.Popup('Rayon')).add_to(world_map)
@@ -90,16 +90,17 @@ def maps(df, carburant, prixmin, prixmax, maposition, list_services, rayon):
     for index, location_info in df.iterrows():
         gaspump = folium.Icon(color='black', icon='tint', icon_color="white", prefix='glyphicon')
         x = location_info["geom"].split(",")
+        popup = location_info["adresse"]+" "+location_info["ville"]
         folium.Marker(
             [float(x[0]),float(x[1])], 
-            popup=location_info["adresse"]+" "+location_info["ville"],
+            popup=popup.encode('raw_unicode_escape'),
             icon=gaspump,
         ).add_to(world_map)
 
     world_map.save('maps.html')
 
 
-def create_histogram(dataframe, dep, fuel, target):
+def create_histogram(dataframe, dep, fuel, target, color):
     # Ensuring that filters exist by setting default values
     if fuel is None:
         fuel = 'E10'
@@ -110,14 +111,13 @@ def create_histogram(dataframe, dep, fuel, target):
     data = dataframe.query("prix_nom == '" + fuel + "' and dep_code == '" + str(dep) + "'")[target]
     max_value = data.max()
     min_value = data.min()
-
     # Preparing the graph
     return px.histogram(data,
                         x=target,
-                        height=335,
+                        height=330,
                         labels={'prix_valeur': 'Prix (€)', 'count': 'Stations (unité)'},
                         range_x=[min_value, max_value],
                         nbins=50,
                         histnorm='density',
-                        color_discrete_sequence=['indianred']
+                        color_discrete_sequence=[dmc.theme.DEFAULT_COLORS[color][6]],
                         )
